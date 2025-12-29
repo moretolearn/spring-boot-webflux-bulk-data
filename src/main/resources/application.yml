@@ -1,0 +1,32 @@
+
+reactor:
+  netty:
+    http:
+      server:
+        accessLogEnabled: false
+
+server:
+  port: 8080
+
+spring:
+  main:
+    web-application-type: reactive   # IMPORTANT
+
+  r2dbc:
+    url: r2dbc:mysql://localhost:3306/mydb?fetchSize=1500
+    username: root
+    password: root
+    pool:
+      enabled: true
+      initial-size: 10
+      max-size: 50
+  sql:
+    init:
+      mode: always
+  application:
+    name: spring-boot-webflux-bulk-data
+
+logging:
+  level:
+    org.springframework.r2dbc: INFO
+    reactor.netty: INFO
